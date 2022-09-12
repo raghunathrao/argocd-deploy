@@ -8,7 +8,7 @@ metadata:
 spec:
   destination:
     name: ''
-    namespace: mongo-db
+    namespace: itp-apps
     server: 'https://kubernetes.default.svc'
   source:
     path: ''
