@@ -1,7 +1,9 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mongodb
+  name: mongo-db
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     name: ''
