@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/vensr/redux-punch-deploy.git
+    repoURL: https://github.com/raghunathrao/argocd-deploy.git
     targetRevision: HEAD
     path: dev
   destination:
