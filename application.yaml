@@ -1,23 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: itp-apps
-  namespace: argocd
+  name: root
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
-
-  source:
-    repoURL: https://github.com/raghunathrao/argocd-deploy.git
-    targetRevision: HEAD
-    path: dev
   destination:
     server: https://kubernetes.default.svc
-    namespace: itp-apps
-
+    namespace: argocd
+  project: default
+  source:
+    path: apps/
+    repoURL: https://github.com/raghunathrao/argocd-deploy.git
+    targetRevision: HEAD
   syncPolicy:
-    syncOptions:
-    - CreateNamespace=true
-
     automated:
-      selfHeal: true
       prune: true
+      selfHeal: true
