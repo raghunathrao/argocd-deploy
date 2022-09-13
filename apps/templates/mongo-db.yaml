@@ -1,8 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mongo-db
-  namespace: argocd
+  name: mongodb
 spec:
   destination:
     name: ''
@@ -11,14 +10,16 @@ spec:
   source:
     path: ''
     repoURL: 'https://charts.bitnami.com/bitnami'
-    targetRevision: 13.0.2
+    targetRevision: 13.1.2
     chart: mongodb
     helm:
       parameters:
-        - name: auth.password
-          value: secret
         - name: auth.rootPassword
           value: root
+        - name: auth.password
+          value: secret
         - name: auth.username
           value: mongoadmin
+        - name: auth.database
+          value: admin
   project: default
