@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: mongo-db
+  namespace: default
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
@@ -22,4 +23,8 @@ spec:
           value: root
         - name: auth.username
           value: mongoadmin
-  project: default
+    project: default
+    syncPolicy:
+      automated:
+        prune: true
+        selfHeal: true
